@@ -1,8 +1,13 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Code Network`,
+    description: `Build anything, as long as it's awsome`,
+    author: `Code Network Members`,
+    email: 'team@codenetwork.co'
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -21,14 +26,27 @@ module.exports = {
         name: `gatsby-starter-default`,
         short_name: `starter`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#0d0f2e`,
+        theme_color: `#01d60`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon.svg`
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
-  ],
-}
+    {
+      resolve: `gatsby-source-datocms`,
+      options: {
+        apiToken: process.env.DATO_APIKEY_READONLY,
+        previewMode: true,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-google-fonts',
+      options: {
+        fonts: [
+          'Open Sans'
+        ],
+        display: 'swap'
+      }
+    }
+  ]
+};

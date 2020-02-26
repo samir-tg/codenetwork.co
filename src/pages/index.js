@@ -1,21 +1,44 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, graphql, useStaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import ExecPreview from "../components/execPreview"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+export const query = graphql`
+  {
+    allDatoCmsExective(filter: { homePage: { eq: true } }) {
+      nodes {
+        name
+        role
+        photo {
+          fluid(maxWidth: 200) {
+            ...GatsbyDatoCmsFluid
+          }
+        }
+      }
+    }
+  }
+`
+
+const IndexPage = ({ data }) => {
+  const execs = data.allDatoCmsExective.nodes
+
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <h1>We Are Code Network</h1>
+      <h2>Build anything, as long as it's awsome</h2>
+      <p>
+        Our members are heavily involved in the local and international startup
+        scene. Our goal as an organisation is to help create the best developer
+        talent in the world, starting here in Brisbane. We’re based at QUT and
+        are expanding to other universities and organisations in the area.
+      </p>
+      <h1>Our Team</h1>
+      <ExecPreview execs={execs} />
+    </Layout>
+  )
+}
 
 export default IndexPage
