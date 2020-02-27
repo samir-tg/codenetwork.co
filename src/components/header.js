@@ -1,6 +1,8 @@
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import React from 'react'
 import Img from 'gatsby-image'
+import SocialIcons from './socialIcons'
+import styled from 'styled-components'
 
 const CodeNetworkLogo = () => {
   const data = useStaticQuery(graphql`
@@ -18,6 +20,29 @@ const CodeNetworkLogo = () => {
   return <Img fluid={data.placeholderImage.childImageSharp.fluid} />
 }
 
+const Button = styled.a`
+  appearance: button;
+  position: relative;
+  background: #01d609;
+  width: 150px;
+  margin: 0 auto;
+  bottom: -13px;
+  border-radius: 20px;
+  border-style: none;
+  text-align: center;
+  padding-top: 11% 0;
+  font-family: sans;
+  color: black;
+  font-weight: bold;
+  line-height: 2.3;
+  box-shadow: 0 0 10px;
+  text-decoration: none;
+  transition: 0.5s;
+  :hover {
+    background: #00ff0a;
+  }
+`
+
 const Header = () => (
   <header
     style={{
@@ -25,6 +50,12 @@ const Header = () => (
       marginBottom: '1.45rem'
     }}
   >
+    <SocialIcons
+      style={{
+        marginLeft: '10vw',
+        display: 'flex'
+      }}
+    />
     <div
       style={{
         margin: '0 auto',
@@ -42,34 +73,7 @@ const Header = () => (
         <CodeNetworkLogo />
       </Link>
     </div>
-    <a
-      href="https://www.facebook.com/groups/WeCodeAlot/"
-      style={{
-        textDecoration: 'none'
-      }}
-    >
-      <div
-        style={{
-          position: 'relative',
-          background: '#01d609',
-          maxWidth: 150,
-          margin: '0 auto',
-          height: '2.5rem',
-          bottom: '-13px',
-          borderRadius: 20,
-          textAlign: 'center',
-          paddingTop: '10% 0',
-          fontFamily: 'sans',
-          color: 'black',
-          fontWeight: 'bold',
-          lineHeight: 2.3,
-          boxShadow: '0 0 10px'
-        }}
-      >
-        {' '}
-        JOIN
-      </div>
-    </a>
+    <Button href="https://facebook.com"> Join Now </Button>
   </header>
 )
 

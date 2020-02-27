@@ -45,6 +45,7 @@ module.exports = {
         fonts: ['Open Sans'],
         display: 'swap'
       }
-    }
+    },
+    'gatsby-plugin-styled-components'
   ]
 }
