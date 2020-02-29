@@ -5,12 +5,13 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from 'react'
+import { graphql, useStaticQuery } from 'gatsby'
 import PropTypes from 'prop-types'
-import { useStaticQuery, graphql } from 'gatsby'
-
+import React from 'react'
+import styled from 'styled-components'
 import Header from './header'
 import './layout.css'
+import SocialIcons from './socialIcons'
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -23,58 +24,70 @@ const Layout = ({ children }) => {
     }
   `)
 
+  const StyledLayout = styled.div`
+    position: relative;
+    min-height: 100vh;
+    text-align: center;
+
+    header {
+      background: #0d0f2e;
+    }
+    main {
+      margin: 0 auto;
+      max-width: 960px;
+      padding-top: 1.5rem;
+      padding-bottom: 4rem;
+    }
+
+    footer {
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      background: #0d0f2e;
+      font-weight: bold;
+
+      .info-pane {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        .email {
+          color: #01d609;
+          text-decoration: none;
+          font-size: 30px;
+
+          @media screen and (max-width: 700px) {
+            font-size: calc(4vw + 2px);
+          }
+        }
+
+        .social-icons {
+          display: flex;
+        }
+      }
+
+      .green-line {
+        background: #01d609;
+        height: 0.5rem;
+      }
+    }
+  `
+
   return (
-    <div
-      style={{
-        position: 'relative',
-        minHeight: '100vh'
-      }}
-    >
+    <StyledLayout>
       <Header />
-      <main
-        style={{
-          margin: '0 auto',
-          maxWidth: 960,
-          paddingTop: '1.5rem',
-          paddingBottom: '4rem'
-        }}
-      >
-        {children}
-      </main>
-      <footer
-        style={{
-          width: '100%',
-          position: 'absolute',
-          bottom: 0
-        }}
-      >
-        <div
-          style={{
-            background: '#0d0f2e',
-            padding: '0.5rem 1.0875rem',
-            color: '#01d609',
-            fontWeight: 'bold',
-            fontSize: 30
-          }}
-        >
-          <a
-            style={{
-              color: 'inherit',
-              textDecoration: 'none'
-            }}
-            href={`mailtod:${data.site.siteMetadata.email}`}
-          >
+      <main>{children}</main>
+      <footer>
+        <div className="info-pane">
+          <a className="email" href={`mailtod:${data.site.siteMetadata.email}`}>
             {data.site.siteMetadata.email}
           </a>
+          <SocialIcons className="social-icons" />
         </div>
-        <div
-          style={{
-            background: '#01d609',
-            height: '0.5rem'
-          }}
-        />
+        <div className="green-line" />
       </footer>
-    </div>
+    </StyledLayout>
   )
 }
 
