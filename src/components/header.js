@@ -3,6 +3,8 @@ import React from 'react'
 import Img from 'gatsby-image'
 import SocialIcons from './socialIcons'
 import styled from 'styled-components'
+import Navbar from './navbar'
+import PropTypes from 'prop-types'
 
 const CodeNetworkLogo = () => {
   const data = useStaticQuery(graphql`
@@ -20,7 +22,7 @@ const CodeNetworkLogo = () => {
   return <Img fluid={data.placeholderImage.childImageSharp.fluid} />
 }
 
-const Button = styled.a`
+const StyledJoinButton = styled.a`
   appearance: button;
   position: relative;
   background: #01d609;
@@ -38,43 +40,50 @@ const Button = styled.a`
   box-shadow: 0 0 10px;
   text-decoration: none;
   transition: 0.5s;
+
   :hover {
     background: #00ff0a;
   }
 `
 
-const Header = () => (
-  <header
-    style={{
-      background: '#0d0f2e',
-      marginBottom: '1.45rem'
-    }}
-  >
-    <SocialIcons
-      style={{
-        marginLeft: '10vw',
-        display: 'flex'
-      }}
-    />
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 200,
-        padding: '2.5rem 1.0875rem'
-      }}
-    >
-      <Link
-        to="/"
-        style={{
-          color: 'white',
-          textDecoration: 'none'
-        }}
-      >
+const StyledTopBar = styled.div`
+  position: absolute;
+  min-width: 100%;
+  padding: 0 7vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  > .navbar,
+  > .social-icons {
+    display: flex;
+  }
+`
+
+const StyledLogo = styled.div`
+  margin: 0 auto;
+  max-width: 200px;
+  width: 30vw;
+  padding: 2.5rem 1.0875rem 1.2rem;
+`
+
+const Header = ({ className }) => (
+  <header className={className}>
+    <StyledTopBar>
+      <SocialIcons className="social-icons" />
+      <Navbar className="navbar" />
+    </StyledTopBar>
+    <StyledLogo>
+      <Link to="/">
         <CodeNetworkLogo />
       </Link>
-    </div>
-    <Button href="https://facebook.com"> Join Now </Button>
+    </StyledLogo>
+    <StyledJoinButton href="https://facebook.com"> Join Now </StyledJoinButton>
   </header>
 )
+
+Header.propTypes = {
+  className: PropTypes.string
+}
 
 export default Header

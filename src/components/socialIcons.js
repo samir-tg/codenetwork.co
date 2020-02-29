@@ -17,52 +17,45 @@ const ICONS = [
   }
 ]
 
-const Div = styled.div`
+const StyledA = styled.a`
+  display: div;
   display: flex;
   border-radius: 5rem;
   align-items: center;
   justify-content: center;
   transition: 0.5s;
   padding: 0.7rem;
+  margin: 0 0.3rem;
+  width: 10vw;
+  max-width: 3rem;
+
+  > img {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 600px) {
+    padding: 0.6rem;
+    margin: 0;
+  }
 
   :hover {
     background-color: rgb(1, 214, 9);
   }
 `
 
-function SocialIcons({ style }) {
+function SocialIcons({ className }) {
   const Icons = ICONS.map(function(icon) {
     return (
-      <div
-        style={{
-          display: 'inline-block'
-        }}
-        key={icon.url}
-      >
-        <a
-          style={{
-            display: 'float'
-          }}
-          href={icon.url}
-        >
-          <Div>
-            <img
-              style={{
-                width: '2rem',
-                marginBottom: 0
-              }}
-              src={icon.image}
-            />
-          </Div>
-        </a>
-      </div>
+      <StyledA key={icon.name} href={icon.url}>
+        <img src={icon.image} />
+      </StyledA>
     )
   })
-  return <div style={style}> {Icons}</div>
+  return <div className={className}> {Icons}</div>
 }
 
 SocialIcons.propTypes = {
-  style: PropTypes.object
+  className: PropTypes.string
 }
 
 export default SocialIcons
