@@ -2,13 +2,11 @@
   "name": "code-network-website",
   "private": true,
   "version": "0.1.0",
-  "author": "Joshua Inglis, Kristian Gibson",
   "dependencies": {
     "gatsby": "^2.19.7",
     "gatsby-image": "^2.2.39",
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-manifest": "^2.2.39",
-    "gatsby-plugin-offline": "^3.0.32",
     "gatsby-plugin-react-helmet": "^3.1.21",
     "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-sharp": "^2.4.3",
@@ -32,6 +30,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-standard": "^4.0.1",
+    "gatsby-cli": "^2.9.0",
     "prettier": "^1.19.1"
   },
   "keywords": [

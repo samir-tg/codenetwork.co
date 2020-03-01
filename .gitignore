@@ -72,3 +72,5 @@ yarn-error.log
 .netlify
 
 .vscode
+yarn.lock
+package-lock.json
