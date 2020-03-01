@@ -1,7 +1,3 @@
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`
-})
-
 module.exports = {
   siteMetadata: {
     title: 'Code Network',
@@ -10,6 +6,7 @@ module.exports = {
     email: 'team@codenetwork.co'
   },
   plugins: [
+    'gatsby-transformer-yaml',
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-filesystem',
@@ -18,25 +15,26 @@ module.exports = {
         path: `${__dirname}/src/images`
       }
     },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: `${__dirname}/src/data`
+      }
+    },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'gatsby-starter-default',
-        short_name: 'starter',
+        name: 'Code Network Website',
+        short_name: 'Code Network',
         start_url: '/',
         background_color: '#0d0f2e',
         theme_color: '#01d60',
         display: 'minimal-ui',
         icon: 'src/images/favicon.svg'
-      }
-    },
-    {
-      resolve: 'gatsby-source-datocms',
-      options: {
-        apiToken: process.env.DATO_APIKEY_READONLY,
-        previewMode: true
       }
     },
     {

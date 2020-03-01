@@ -1,0 +1,13 @@
+
+- name: Josh
+  role: Treasure
+  homePage: true
+  photo: "./execs/josh.jpg"
+- name: Kristian
+  role: President
+  homePage: true
+  photo: "./execs/kristian.jpg"
+- name: Max
+  role: Vice-President
+  homePage: true
+  photo: "./execs/max.jpg"

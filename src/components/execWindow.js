@@ -21,7 +21,10 @@ const StyledExecWindow = styled.div`
 
 const ExecWindow = ({ exec, className }) => (
   <StyledExecWindow className={className}>
-    <Img className="image" fluid={{ ...exec.photo.fluid, aspectRatio: 1 }} />
+    <Img
+      className="image"
+      fluid={{ ...exec.photo.childImageSharp.fluid, aspectRatio: 1 }}
+    />
     <h3 className="name">{exec.name}</h3>
     <h5>{exec.role}</h5>
   </StyledExecWindow>

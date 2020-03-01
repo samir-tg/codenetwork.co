@@ -1,28 +1,27 @@
-import { graphql } from 'gatsby'
-import PropTypes from 'prop-types'
+import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 import ExecPreview from '../components/execPreview'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
-export const query = graphql`
-  {
-    allDatoCmsExective(filter: { homePage: { eq: true } }) {
-      nodes {
-        name
-        role
-        photo {
-          fluid(maxWidth: 200) {
-            ...GatsbyDatoCmsFluid
+const IndexPage = () => {
+  const execs = useStaticQuery(graphql`
+    {
+      allExecsYaml {
+        nodes {
+          name
+          role
+          photo {
+            childImageSharp {
+              fluid(maxWidth: 200) {
+                ...GatsbyImageSharpFluid
+              }
+            }
           }
         }
       }
     }
-  }
-`
-
-const IndexPage = ({ data }) => {
-  const execs = data.allDatoCmsExective.nodes
+  `).allExecsYaml.nodes
 
   return (
     <Layout>
@@ -39,10 +38,6 @@ const IndexPage = ({ data }) => {
       <ExecPreview execs={execs} />
     </Layout>
   )
-}
-
-IndexPage.propTypes = {
-  data: PropTypes.object.isRequired
 }
 
 export default IndexPage
