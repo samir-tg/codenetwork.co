@@ -1,6 +1,6 @@
 
 - name: Josh
-  role: Treasure
+  role: Treasurer
   homePage: true
   photo: "./execs/josh.jpg"
 - name: Kristian
