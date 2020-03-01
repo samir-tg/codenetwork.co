@@ -14,6 +14,10 @@ const ICONS = [
   {
     image: '/twitter.svg',
     url: 'https://twitter.com/qutcode'
+  },
+  {
+    image: '/github.svg',
+    url: 'https://github.com/codenetwork/'
   }
 ]
 
