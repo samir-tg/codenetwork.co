@@ -34,6 +34,10 @@ const IndexPage = () => {
         talent in the world, starting here in Brisbane. We’re based at QUT and
         are expanding to other universities and organisations in the area.
       </p>
+      <p>
+        This site is a work in progress. If you'd like to contribute, you can do
+        so <a href="https://github.com/codenetwork/codenetwork.co">here</a>
+      </p>
       <h1>Our Team</h1>
       <ExecPreview execs={execs} />
     </Layout>
