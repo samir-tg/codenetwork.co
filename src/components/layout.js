@@ -7,11 +7,12 @@
 
 import { graphql, useStaticQuery } from 'gatsby'
 import PropTypes from 'prop-types'
-import React from 'react'
-import styled from 'styled-components'
+import React, { useState } from 'react'
+import styled, { ThemeProvider } from 'styled-components'
 import Header from './header'
 import './layout.css'
 import SocialIcons from './socialIcons'
+import UI from '../ui'
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -30,7 +31,7 @@ const Layout = ({ children }) => {
     text-align: center;
 
     header {
-      background: #0d0f2e;
+      background: ${props => props.theme.main.bg};
     }
     main {
       margin: 0 auto;
@@ -39,11 +40,15 @@ const Layout = ({ children }) => {
       padding-bottom: 4rem;
     }
 
+    .main-container {
+      background: ${props => props.theme.content.bg};
+      color: ${props => props.theme.content.fg};
+    }
     footer {
       width: 100%;
       position: absolute;
       bottom: 0;
-      background: #0d0f2e;
+      background: ${props => props.theme.main.bg};
       font-weight: bold;
 
       .info-pane {
@@ -51,9 +56,10 @@ const Layout = ({ children }) => {
         display: flex;
         align-items: center;
         justify-content: space-around;
+        flex-wrap: wrap;
 
         .email {
-          color: #01d609;
+          color: ${props => props.theme.main.fg};
           text-decoration: none;
           font-size: 30px;
 
@@ -68,26 +74,41 @@ const Layout = ({ children }) => {
       }
 
       .green-line {
-        background: #01d609;
+        background: ${props => props.theme.main.fg};
         height: 0.5rem;
       }
     }
   `
+  const [theme, setTheme] = useState('light')
+  const toggleTheme = () => {
+    if (theme === 'light') {
+      setTheme('dark')
+    } else {
+      setTheme('light')
+    }
+  }
 
   return (
-    <StyledLayout>
-      <Header />
-      <main>{children}</main>
-      <footer>
-        <div className="info-pane">
-          <a className="email" href={`mailtod:${data.site.siteMetadata.email}`}>
-            {data.site.siteMetadata.email}
-          </a>
-          <SocialIcons className="social-icons" />
+    <ThemeProvider theme={theme === 'light' ? UI.light : UI.dark}>
+      <StyledLayout>
+        <Header />
+        <div className="main-container">
+          <main>{children}</main>
         </div>
-        <div className="green-line" />
-      </footer>
-    </StyledLayout>
+        <footer onDoubleClick={toggleTheme}>
+          <div className="info-pane">
+            <a
+              className="email"
+              href={`mailtod:${data.site.siteMetadata.email}`}
+            >
+              {data.site.siteMetadata.email}
+            </a>
+            <SocialIcons className="social-icons" />
+          </div>
+          <div className="green-line" />
+        </footer>
+      </StyledLayout>
+    </ThemeProvider>
   )
 }
 

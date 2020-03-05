@@ -43,7 +43,7 @@ const StyledA = styled.a`
   }
 
   :hover {
-    background-color: rgb(1, 214, 9);
+    background-color: ${props => props.theme.main.fg};
   }
 `
 

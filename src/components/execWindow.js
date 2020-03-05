@@ -10,7 +10,7 @@ const StyledExecWindow = styled.div`
   .image {
     border-radius: 50%;
     border-style: solid;
-    border-color: #01d609;
+    border-color: ${props => props.theme.main.fg};
     border-width: 6px;
   }
 
