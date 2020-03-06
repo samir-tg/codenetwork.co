@@ -79,7 +79,9 @@ const Header = ({ className }) => (
         <CodeNetworkLogo />
       </Link>
     </StyledLogo>
-    <StyledJoinButton href="https://facebook.com"> Join Now </StyledJoinButton>
+    <StyledJoinButton href="https://www.facebook.com/groups/WeCodeAlot/">
+      Join Now
+    </StyledJoinButton>
   </header>
 )
 

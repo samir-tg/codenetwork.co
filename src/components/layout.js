@@ -30,6 +30,11 @@ const Layout = ({ children }) => {
     min-height: 100vh;
     text-align: center;
 
+    p {
+      text-align: justify;
+      text-align-last: center;
+    }
+
     header {
       background: ${props => props.theme.main.bg};
     }
@@ -40,6 +45,9 @@ const Layout = ({ children }) => {
       padding-bottom: 4rem;
     }
 
+    .main-margin {
+      margin: 0 1rem;
+    }
     .main-container {
       background: ${props => props.theme.content.bg};
       color: ${props => props.theme.content.fg};
@@ -93,7 +101,9 @@ const Layout = ({ children }) => {
       <StyledLayout>
         <Header />
         <div className="main-container">
-          <main>{children}</main>
+          <div className="main-margin">
+            <main>{children}</main>
+          </div>
         </div>
         <footer onDoubleClick={toggleTheme}>
           <div className="info-pane">

@@ -11,3 +11,23 @@
   role: Vice-President
   homePage: true
   photo: "./execs/max.jpg"
+- name: Haard
+  role: Secutary
+  homePage: true
+  photo: "./execs/haard.jpg"
+- name: Callum
+  role: General Exec
+  homePage: true
+  photo: "./execs/callum.jpg"
+- name: Alex
+  role: General Exec
+  homePage: true
+  photo: "./execs/alex.jpg"
+- name: John 
+  role: General Exec
+  homePage: true
+  photo: "./execs/john.jpg"
+- name: Lucas
+  role: General Exec
+  homePage: true
+  photo: "./execs/lucas.jpg"
