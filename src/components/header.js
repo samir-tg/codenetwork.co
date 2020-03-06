@@ -28,13 +28,12 @@ const StyledJoinButton = styled.a`
   position: relative;
   background: ${props => props.theme.main.fg};
   width: 150px;
+  display: block;
   margin: 0 auto;
   bottom: -13px;
   border-radius: 20px;
   border-style: none;
   text-align: center;
-  padding-top: 11% 0;
-  font-family: sans;
   color: black;
   font-weight: bold;
   line-height: 2.3;
