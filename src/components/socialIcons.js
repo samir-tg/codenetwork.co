@@ -50,7 +50,7 @@ const StyledA = styled.a`
 function SocialIcons({ className }) {
   const Icons = ICONS.map(function(icon) {
     return (
-      <StyledA key={icon.name} href={icon.url}>
+      <StyledA key={icon.image} href={icon.url}>
         <img src={icon.image} />
       </StyledA>
     )

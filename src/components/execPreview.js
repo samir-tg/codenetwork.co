@@ -17,7 +17,7 @@ const StyledExecPreview = styled.div`
 
 const ExecPreview = ({ execs }) => {
   const elms = execs.map(exec => {
-    return <ExecWindow className={'exec-window'} key={execs.name} exec={exec} />
+    return <ExecWindow className={'exec-window'} key={exec.name} exec={exec} />
   })
   return <StyledExecPreview>{elms}</StyledExecPreview>
 }
