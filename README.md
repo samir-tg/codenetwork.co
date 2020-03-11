@@ -15,6 +15,23 @@ This website is build with [gatsbyjs](https://gatsbyjs.org), and hosted off [net
 3. Install dependancies | `npm install`
 4. run local build with | `npm start`
 
-## Contributing 
+### On Windows
 
-If you are unsure about how to create pull reqeust, look at this for guidance https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request 
+Follow this tutorial to get the project building on Windows:
+
+https://www.gatsbyjs.org/docs/gatsby-on-windows/
+
+If you experience build errors, a `docker-compose.yml` file is included to enable virtualized development through docker
+
+You can run it with:
+
+```bash
+docker-compose up develop
+```
+
+Be patient when running it for the first time as it runs an npm install to your current directory,
+but for some reason does not display the installation commands as its running - can take up to 10 minutes.
+
+## Contributing
+
+If you are unsure about how to create pull reqeust, look at this for guidance https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request
